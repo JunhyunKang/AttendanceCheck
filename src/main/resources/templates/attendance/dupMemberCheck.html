@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header" />
+<body>
+<div class="container">
+  <div th:replace="fragments/bodyHeader :: bodyHeader"/>
+  <div>
+    <table class="table table-striped">
+      <thead> <tr>
+        <!--        <th>#</th>-->
+        <th>이름</th> <th>회원번호</th> <th>출석</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="members : ${members}">
+        <!--        <td th:text="${class.id}"></td>-->
+        <td th:text="${members.getName()}"></td>
+        <td th:text="${members.getCode()}"></td>
+        <td>
+          <!--          <a href="#" th:href="@{delete/{id} (id=${member.id})}" class="btn btn-primary" role="button">삭제</a>-->
+          <a href="#" th:href="@{/attendance/{id}/checkDup/{memberId} (id=${classId}, memberId=${members.getId()})}" class="btn-primary">출석</a>
+        </td>
+
+        <!--        <td>-->
+        <!--          <a href="#" th:href="@{/items/{id}/edit (id=${item.id})}" class="btn btn-primary" role="button">수정</a>-->
+        <!--        </td> -->
+      </tr>
+
+      </tbody>
+    </table>
+  </div>
+  <!--  <div style="text-align: center">-->
+  <!--    <a href="#" th:href="@{register/{id} (id=${registrations.get(0).getId()})}" class="btn btn-primary" role="button">수강생 추가</a>-->
+  <!--  </div>-->
+
+  </body>
+
+</html>

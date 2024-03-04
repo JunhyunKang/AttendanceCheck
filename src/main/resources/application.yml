@@ -1,0 +1,26 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    #    url: jdbc:mysql://119.205.26.230:3306/temp_db?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    url: jdbc:mysql://database-1.cp0c68imib4y.ap-northeast-2.rds.amazonaws.com:3306/attendance # aws RDS mysql 사용 -> 현재 결제 문제 때문에 중지함
+    #    username: tempuser
+    #    password: 'temp_user'
+    username: root
+    password: '00001111'
+#  security:
+#    user:
+#      name: user
+#      password: 1234
+  jpa:
+    database: mysql
+    hibernate:
+      ddl-auto: update  #이거 나중에 create -> 다른거로 바꿔줘야함
+    properties:
+      hibernate:
+        format_sql: true
+
+logging:
+  level:
+    org.hibernate.SQL: debug
+    org.hibernate.orm.jdbc.bind: trace #??? ?? 3.x, hibernate6
+
