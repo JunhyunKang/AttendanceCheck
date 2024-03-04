@@ -1,12 +1,14 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    #    url: jdbc:mysql://119.205.26.230:3306/temp_db?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
-    url: jdbc:mysql://database-1.cp0c68imib4y.ap-northeast-2.rds.amazonaws.com:3306/attendance # aws RDS mysql 사용 -> 현재 결제 문제 때문에 중지함
+#        url: jdbc:mysql://119.205.26.230:3306/temp_db?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+#    url: jdbc:mysql://database-1.cp0c68imib4y.ap-northeast-2.rds.amazonaws.com:3306/attendance # aws RDS mysql 사용 -> 현재 결제 문제 때문에 중지함
+    url: jdbc:mysql://localhost:3306/attendance?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
     #    username: tempuser
     #    password: 'temp_user'
     username: root
-    password: '00001111'
+#    password: '00001111'
+    password: '0000'
 #  security:
 #    user:
 #      name: user
