@@ -68,9 +68,9 @@ public class ExcelController {
             Member member = Member.createMember(row.getCell(0).getStringCellValue(), row.getCell(1).getStringCellValue());
             Long memberId = memberService.saveMember(member);
             log.info("회원번호 중복인 것은 이미 있던 id 돌려줌");
-
-            Long regiId = registrationService.register(memberId, classId);
             log.info("해당 수업에 이미 존재하는 회웤번호는 에러, 한 회원번호가 여러 수업으로 들어갈 수는 있음");
+            Long regiId = registrationService.register(memberId, classId);
+
         }
 
 /**

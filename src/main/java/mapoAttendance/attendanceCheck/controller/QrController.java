@@ -105,7 +105,8 @@ public class QrController {
 
             Attendance attendance;// = Attendance.createAttendance(classes, member);
             if ((attendance = Attendance.createAttendance(classes, member)) == null) {
-                return showMessageAndRedirect(new MessageDto("이미 출석한 회원입니다!!!", referer, RequestMethod.GET, null), model);
+                return "redirect:"+referer;
+//                return showMessageAndRedirect(new MessageDto("이미 출석한 회원입니다!!!", referer, RequestMethod.GET, null), model);
 
             }
             attendanceRepository.save(attendance);
@@ -125,7 +126,9 @@ public class QrController {
 
             Attendance attendance;// = Attendance.createAttendance(classes, member);
             if ((attendance = Attendance.createAttendance(classes, member)) == null) {
-                return showMessageAndRedirect(new MessageDto("이미 출석한 회원입니다!!!", referer, RequestMethod.GET, null), model);
+                return "redirect:"+referer;
+
+//                return showMessageAndRedirect(new MessageDto("이미 출석한 회원입니다!!!", referer, RequestMethod.GET, null), model);
 
             }
             attendanceRepository.save(attendance);
@@ -134,7 +137,8 @@ public class QrController {
         }
 
         log.info("없는 멤버!!!");
-        return showMessageAndRedirect(new MessageDto("등록되지 않은 회원입니다!!!", referer, RequestMethod.GET, null), model);
+        log.info("********없는 멤버!!!!*********  이름:"+ form.getName()+" 회원번호:"+form.getCode());
+        return showMessageAndRedirect(new MessageDto("등록되지 않은 회원입니다!!!   |   회원번호:"+form.getCode(), referer, RequestMethod.GET, null), model);
         //없으면 빨간 화면이나 엑스 표시 띄우
 //        return "redirect:"+ referer;
 
@@ -157,7 +161,8 @@ public class QrController {
 
         Attendance attendance;// = Attendance.createAttendance(classes, member);
         if ((attendance = Attendance.createAttendance(classes, member)) == null) {
-            return showMessageAndRedirect(new MessageDto("이미 출석한 회원입니다!!!", "/attendance/"+classId+"/check", RequestMethod.GET, null), model);
+            return "redirect:/attendance/" + classId + "/check";
+//            return showMessageAndRedirect(new MessageDto("이미 출석한 회원입니다!!!", "/attendance/"+classId+"/check", RequestMethod.GET, null), model);
 
         }
         attendanceRepository.save(attendance);

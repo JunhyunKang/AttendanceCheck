@@ -6,26 +6,80 @@
   <input th:each="key, status : ${params.data.keySet()}" type="hidden" th:name="${key}" th:value="${params.data.get(key)}" />
 </form>
 
-<script th:inline="javascript">
-  /* <![CDATA[ */
-
-  window.onload = () => {
-    const message = [[ ${params.message} ]];
-    if (message) {
-      alert(message);
-    }
-
-    const form = document.getElementById('redirectForm');
-    if (form) {
-      form.submit();
-      return false;
-    }
-
-    const redirectUri = [[ ${params.redirectUri} ]];
-    location.href = redirectUri;
+<style>
+  /* 빨간색 화면을 표시할 클래스 */
+  .red-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 0, 0, 0.7); /* 빨간색 배경, 투명도 조절 가능 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* 다른 요소 위에 표시하기 위해 높은 z-index 설정 */
   }
 
-  /* ]]> */
-</script>
+  /* 메시지를 표시할 스타일 */
+  .message {
+    color: white;
+    font-size: 24px;
+    text-align: center;
+  }
+</style>
+
+
+<!-- 빨간색 화면을 나타내는 요소 -->
+
+<div class="red-screen" id="redScreen">
+  <script>
+    const redirectUri = '[[ ${params.redirectUri} ]]';
+    const code = '[[ ${params.message} ]]'
+    document.getElementById("redScreen").innerHTML = code;
+    document.getElementById("redScreen").style.color = "white";
+    document.getElementById("redScreen").style.fontSize="x-large";
+
+    // 빨간색 화면을 보여주는 함수
+    window.onload = function() {
+      document.getElementById("redScreen").style.display = "flex";
+
+      // 3초 뒤에 다른 페이지로 리다이렉트
+      setTimeout(function() {
+
+        location.href = redirectUri;
+      }, 3000); // 3초(3000밀리초) 후에 리다이렉트합니다.
+    };
+  </script>
+
+  <div class="message">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;출석부에 없는 회원입니다.</div>
+</div>
+
+
+
+<!--<script th:inline="javascript">-->
+<!--  /* <![CDATA[ */-->
+
+<!--  window.onload = () => {-->
+<!--    const message = [[ ${params.message} ]];-->
+<!--    if (message) {-->
+
+
+<!--      alert(message);-->
+<!--    }-->
+
+
+<!--    const form = document.getElementById('redirectForm');-->
+<!--    if (form) {-->
+<!--      form.submit();-->
+<!--      return false;-->
+<!--    }-->
+
+<!--    const redirectUri = [[ ${params.redirectUri} ]];-->
+<!--    location.href = redirectUri;-->
+<!--  }-->
+
+<!--  /* ]]> */-->
+<!--</script>-->
 </body>
 </html>
