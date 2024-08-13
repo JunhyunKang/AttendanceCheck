@@ -21,18 +21,44 @@
       <a class="btn btn-lg btn-dark" href="/attendance">출석 체크</a>
       <a class="btn btn-lg btn-dark" href="/check">출석 확인</a>
     </p>
-    <a href="#" th:href="'javascript:cancel()'" class="btn btn-danger">삭제</a>
+<!--    <a href="#" th:href="'javascript:cancel()'" class="btn btn-danger">삭제</a>-->
+
+    <!-- 삭제 버튼 -->
+    <a href="#" class="btn btn-danger" onclick="showDeleteConfirmation()">삭제</a>
+
+    <!-- 비밀번호 입력 폼 -->
+    <div id="deleteConfirmation" style="display: none;">
+      <h2>비밀번호 확인</h2>
+      <form id="deleteForm" method="post" action="/delete">
+        <label for="password">비밀번호:</label>
+        <input type="password" id="password" name="password" required />
+        <button type="submit">삭제</button>
+        <button type="button" onclick="hideDeleteConfirmation()">취소</button>
+      </form>
+    </div>
+
 
   </div>
   <div th:replace="fragments/footer :: footer" />
 </div> <!-- /container -->
 </body>
+<!--<script>-->
+<!--  function cancel() {-->
+<!--    var form = document.createElement("form");-->
+<!--    form.setAttribute("method", "post");-->
+<!--    form.setAttribute("action", "/delete");-->
+<!--    document.body.appendChild(form);-->
+<!--    form.submit();-->
+<!--  } </script>-->
+
+
 <script>
-  function cancel() {
-    var form = document.createElement("form");
-    form.setAttribute("method", "post");
-    form.setAttribute("action", "/delete");
-    document.body.appendChild(form);
-    form.submit();
-  } </script>
+  function showDeleteConfirmation() {
+    document.getElementById('deleteConfirmation').style.display = 'block';
+  }
+
+  function hideDeleteConfirmation() {
+    document.getElementById('deleteConfirmation').style.display = 'none';
+  }
+</script>
 </html>
