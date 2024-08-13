@@ -5,6 +5,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.extern.java.Log;
 import mapoAttendance.attendanceCheck.exception.NotEnoughException;
 
 import java.time.LocalDateTime;
@@ -88,6 +89,8 @@ public class Registration {
             throw new NotEnoughException("No member and registration at member");
         }
         r.remove(this);
+
+
 
         classes.addNumber();
 

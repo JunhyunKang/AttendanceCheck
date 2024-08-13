@@ -7,6 +7,7 @@ import mapoAttendance.attendanceCheck.service.ClassesService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
@@ -36,5 +37,16 @@ public class ClassesController {
         model.addAttribute("classes", classes);
         return "classes/classesList";
     }
+
+
+
+    @PostMapping("/classes/delete/{classId}")
+    public String deleteClass(@PathVariable("classId") Long classId) {
+        classesService.deleteClass(classId);
+        log.info("registration 취소 하고 db에서 삭제");
+
+        return "redirect:/classes";
+    }
+
 
 }

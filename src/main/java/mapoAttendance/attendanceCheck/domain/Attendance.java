@@ -98,5 +98,16 @@ public class Attendance {
         }
         return 0;
     }
+    public void delete() {
+        Classes classes = getClasses();
+        List<Attendance> attendances = classes.getAttendances();
+        if (attendances.isEmpty()) {
+            throw new NotEnoughException("No member and registration");
+        }
+        attendances.remove(this);
+
+
+    }
+
 
 }

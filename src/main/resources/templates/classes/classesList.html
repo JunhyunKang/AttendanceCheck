@@ -23,6 +23,11 @@
             <!--            <button class="table_register_btn">엑셀 등록</button>-->
 <!--            <button class="table_update_btn">수강생 관리</button>-->
         </td>
+
+          <td>
+              <!--          <a href="#" th:href="@{delete/{id} (id=${member.id})}" class="btn btn-primary" role="button">삭제</a>-->
+              <a href="#" th:href="'javascript:cancel('+${class.id}+')'" class="btn btn-danger">삭제</a>
+          </td>
           <!--        <td>-->
 <!--          <a href="#" th:href="@{/items/{id}/edit (id=${item.id})}" class="btn btn-primary" role="button">수정</a>-->
 <!--        </td> -->
@@ -33,4 +38,14 @@
   <div th:replace="fragments/footer :: footer"/>
 </div> <!-- /container -->
 </body>
+
+<script>
+    function cancel(classId) {
+        var form = document.createElement("form");
+        form.setAttribute("method", "post");
+        form.setAttribute("action", "/classes/" + "delete/"+ classId);
+        document.body.appendChild(form);
+        form.submit();
+    } </script>
+
 </html>

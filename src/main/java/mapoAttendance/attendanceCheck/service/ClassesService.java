@@ -1,8 +1,12 @@
 package mapoAttendance.attendanceCheck.service;
 
 import lombok.RequiredArgsConstructor;
+import mapoAttendance.attendanceCheck.domain.Attendance;
 import mapoAttendance.attendanceCheck.domain.Classes;
+import mapoAttendance.attendanceCheck.domain.Registration;
+import mapoAttendance.attendanceCheck.repository.AttendanceRepository;
 import mapoAttendance.attendanceCheck.repository.ClassesRepository;
+import mapoAttendance.attendanceCheck.repository.RegistrationRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,6 +18,8 @@ import java.util.List;
 public class ClassesService {
 
     private final ClassesRepository classesRepository;
+    private final AttendanceRepository attendanceRepository;
+    private final RegistrationRepository registrationRepository;
 
     @Transactional // -> 예는 등록하는 애라 readOnly 하면 안
     public Long join(Classes classes) {
@@ -36,6 +42,14 @@ public class ClassesService {
 
     public Classes findOne(Long classesId) {
         return classesRepository.findOne(classesId);
+    }
+
+    @Transactional
+    public void deleteClass(Long classId) {
+        classesRepository.delete(classId);
+
+
+
     }
 
 

@@ -21,8 +21,18 @@
       <a class="btn btn-lg btn-dark" href="/attendance">출석 체크</a>
       <a class="btn btn-lg btn-dark" href="/check">출석 확인</a>
     </p>
+    <a href="#" th:href="'javascript:cancel()'" class="btn btn-danger">삭제</a>
+
   </div>
   <div th:replace="fragments/footer :: footer" />
 </div> <!-- /container -->
 </body>
+<script>
+  function cancel() {
+    var form = document.createElement("form");
+    form.setAttribute("method", "post");
+    form.setAttribute("action", "/delete");
+    document.body.appendChild(form);
+    form.submit();
+  } </script>
 </html>

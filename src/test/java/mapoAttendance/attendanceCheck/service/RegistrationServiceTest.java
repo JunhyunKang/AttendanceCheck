@@ -91,6 +91,7 @@ class RegistrationServiceTest {
         assertThrows(IndexOutOfBoundsException.class,
                 ()->{member2.getRegistrations().get(0);},
                 "수강목록에서 취소되어야함");
+
     }
 
 

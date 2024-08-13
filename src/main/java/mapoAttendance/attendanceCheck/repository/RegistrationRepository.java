@@ -9,6 +9,7 @@ import mapoAttendance.attendanceCheck.domain.Member;
 import mapoAttendance.attendanceCheck.domain.Registration;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
 import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
@@ -30,6 +31,8 @@ public class RegistrationRepository {
     }
 
     public void delete(Registration registration){
+        Assert.notNull(registration, "registration must not be null!");
+
         em.remove(registration);}
 //    public List<Order> findAll(OrderSearch orderSearch) {
 //        return em.createQuery("select o from Order o join o.member m where o.status = :status and m.name like :name",
